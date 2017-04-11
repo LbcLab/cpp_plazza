@@ -12,6 +12,9 @@ Sommaire :
 *	[_IDBManager_]()
 *	[_IGraph_]()
 *	[_IProcessManager_]()
+	*	[_Process_]()
+	*	[_ThreadPool_](#ThreadPool)
+	*	[_Timer_](#Timer)
 
 Core <a id = "Core"></a>
 ------------------------
@@ -40,7 +43,52 @@ private:
 * _run()_ est la fonction appelée par le _main()_
 * Les attributs [_db_](), [_graph_]() et [_processManager_]() sont expliqués dans la suite de la documentation
 
-### Timer
+### ThreadPool <a id = "ThreadPool"></a>
+```
+#pragma once
+#ifndef THREADPOOL_HH_
+# define THREADPOOL_HH_
+typedef std::chrono::time_point<std::chrono::system_clock> Time;
+class ThreadPool
+{
+public:
+  ThreadPool(size_t maxThreads);
+  ~ThreadPool();
+  bool createThread(void (*func)(void *param), ThreadPool *threadPool);
+  int  joinAll();
+  const Time &getTimeOfLastJob() const;
+  std::string popTodoTasks();
+  void pushTodoTasks(const std::string &task);
+  std::string popDoneTasks();
+  void pushDoneTasks(const std::string &task);
+private:
+  Time timeOfLastJob;
+  /*
+  ** Taks.
+  */
+  std::queue<std::string> todoTasks;
+  std::queue<std::string> doneTasks;
+  /*
+  ** Thread and Mutex.
+  */
+  std::mutex mutex;
+  size_t maxThreads;
+  std::vector<std::thread> threads;
+};
+#endif
+```
+
+#### Fonctionnalitées :
+
+*	_createThread(void (\*func)(void \*param), void \*param)_ crée un nouveau fil d'éxécution à partir de celui donné en paramètre, et lui affilie une tâche
+* _joinAll()_ supprime tous les fils d'éxécutions de la ThreadPool
+* _getTimeOfLastJob()_ retourne l'heure de la dernière action éxécuté par la ThreadPool (cela permet de quitter au bout d'un temps _t_)
+* _popTodoTasks()_ retourne la prochaîne tâche à accomplir, et la supprime de sa _queu_
+*	_popDoneTasks()_ retourne la dernière tâche accomplie, et la supprime de sa _queu_
+*	_pushTodoTasks(const std::string &task)_ ajoute une tâche à accomplir dans la _queu_
+*	_pushDoneTasks(const std::string &task)_ ajoute une tâche à accoplir dans la _queu_
+
+### Timer <a id = "Timer"></a>
 
 ```
 #pragma once
