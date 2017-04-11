@@ -80,13 +80,18 @@ private:
 
 #### Fonctionnalitées :
 
-*	_createThread(void (\*func)(void \*param), void \*param)_ crée un nouveau fil d'éxécution à partir de celui donné en paramètre, et lui affilie une tâche
+*	_createThread(void (\*func)(void \*param), void \*param)_ créée un nouveau fil d'éxécution à partir de celui donné en paramètre, et lui affilie une tâche
 * _joinAll()_ supprime tous les fils d'éxécutions de la ThreadPool
 * _getTimeOfLastJob()_ retourne l'heure de la dernière action éxécuté par la ThreadPool (cela permet de quitter au bout d'un temps _t_)
-* _popTodoTasks()_ retourne la prochaîne tâche à accomplir, et la supprime de sa _queu_
+*	 _popTodoTasks()_ retourne la prochaîne tâche à accomplir, et la supprime de sa _queu_
 *	_popDoneTasks()_ retourne la dernière tâche accomplie, et la supprime de sa _queu_
 *	_pushTodoTasks(const std::string &task)_ ajoute une tâche à accomplir dans la _queu_
 *	_pushDoneTasks(const std::string &task)_ ajoute une tâche à accoplir dans la _queu_
+*	_todoTasks_ représente la _queu_ des tâches à accomplir
+*	_doneTasks_ représente la _queu_ des tâches accomplies
+*	_mutex_ protège une ressource à l'intérieur d'un processus
+*	_maxThreads_ correspond au nombre maximum de fils d'éxécutions par processeur
+*	_threads_ contient les différents fils d'éxécutions de la _ThreadPool_
 
 ### Timer <a id = "Timer"></a>
 
