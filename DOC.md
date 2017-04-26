@@ -133,9 +133,64 @@ On y retrouve les classe Cipher, CaesarCipher et XorCipher
 
 ### Cipher <a id = "Cipher"></a>
 
+Cipher contient un point d'entrée par lequel on donne le nom du fichier ainsi
+que le type d'information recherché <br />
+Ce point d'entrée est :<br />
+
+void findData(std::unique\_ptr<IFile> &file, plz::Information);
+
+Le point d'entrée du déchiffrement est la fonction membre decipher();<br />
+Cette fonction accepte une partie du fichier afin de ne pas procéder à des tests
+sur l'ensemble des fichiers et un plz::Information afin de rechercher et de valider
+une information.
+
+Une partie de ce fichier va être utilisée pour détecter le type de chiffrement.
+
 Cette classe contient des fonctionnalités pour tester la méthode de chiffrement.
 - bool test(char \*const)  : teste le format de donnée grace a une collection de méthodes
 - bool testRaw(char \*const, plz::Information) : test une donnée non chiffrée pour l'information demandée
 - bool testCaesar(char \*const, plz::Information) : teste une donnée chiffrée avec Caesar pour l'information demandée
 - bool testXor (char \*const, plz::Information) : teste une donnée chiffrée avec xor pour l'information demandée
 
+La fonction membre test() essaye de déterminer le type de fichier. Après dénombrement
+des fichiers donnés avec le sujet, nous avons établi la liste de priorité suivante :
+- 676 gif
+- 278 zip
+- 263 html
+- 131 jpg
+- 69 txt
+- 42 PI1
+- 33 LST
+- 17 php3
+- 12 png
+- 3 css
+- 3 jar
+- 3 mdz
+- 3 xmz
+- 2 ym
+- 2 lst
+- 2 class
+- 2 prg
+- 2 pi1
+- 1 rtf
+- 1 S
+- 1 TXT
+- 1 swf
+- 1 MOD
+- 1 MUS
+- 1 diz
+- 1 SND
+- 1 msa
+
+Le numéro de gauche dénombre les fichiers définis par le litéral à leur droite.
+Le Cipher contient également divers outils permettant de réaliser des analyses
+sur le fichier. Leur existence est historique puisque les tests sur les fichiers
+donnés ne se sont pas révélés assez explicites.<br />
+
+- std::size\_t getDistributionSignature(std::map<char, double> map) const;
+- std::map<char, double> englishDistribution(void) const;
+- std::map<char, double> frequencyAnalysis(std::string const &str);
+
+Une fois les tests réalisés, le fichier est déchiffré et une fonction membre <br />
+const std::vector<std::string> &getCollectedData() const;<br />
+est appelée pour récupérer les données trouvées dans le fichier.
