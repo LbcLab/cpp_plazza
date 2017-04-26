@@ -19,6 +19,7 @@ Sommaire :
 	*	[_Cipher_](#Cipher)
 	*	[_CaesarCipher_](#CaesarCipher)
 	*	[_XorCipher_](#XorCipher)
+*	[_Lexer_](#Lexer)
 
 Core <a id = "Core"></a>
 ------------------------
@@ -205,8 +206,8 @@ CaesarCiphers <a id = "CaesarCipher"></a>
 Cette classe est instanciée par Cipher, elle est détenue sous la forme d'un unique ptr<br />
 Elle contient deux fonctions membre destinées à chiffrer/déchiffrer et à bruteforcer un code.
 
-- std::string caesar_cipher(std::string const &str, std::size_t shift);
-- std::shared_ptr<std::vector<std::string> > bruteforce_caesar(std::string const &);
+- std::string caesar\_cipher(std::string const &str, std::size\_t shift);
+- std::shared\_ptr<std::vector<std::string> > bruteforce\_caesar(std::string const &);
 
 Des tests unitaires sont présents dans src/cipher/main.cpp
 
@@ -218,8 +219,25 @@ clef en char const [2] ou en std::string const.<br />
 Une troisième méthode est là pour bruteforcer le code. Elle renvoie les valeurs
 possibles sous forme d'un pointeur partagé sur un vecteur de string.<br />
 
-- std::string xor_cipher(std::string const, char const [2]);
-- std::string xor_cipher(std::string const, std::string const);
-- std::shared_ptr<std::vector<std::string> > bruteforce_xor(std::string const);
+- std::string xor\_cipher(std::string const, char const [2]);
+- std::string xor\_cipher(std::string const, std::string const);
+- std::shared\_ptr<std::vector<std::string> > bruteforce\_xor(std::string const);
 
 Des tests unitaires sont présents dans src/cipher/main.cpp
+
+Lexer/parser <a id = "Lexer"></a>
+------------------------
+
+Le lexer/parser a pour but d'analyser des buffers, qu'il s'agisse de la ligne
+de commande ou de parties du fichier à déchiffrer. Les points d'entrée de ces
+deux analyses sont lex() et lexCli().<br />
+Le lexer construit une liste de tokens qui est alors parsée.<br />
+- std::shared\_ptr<std::vector<std::pair<std::string, plz::Information> > > getTokenList(void) const;<br />
+getTokenList permet de récupérer cette liste de tokens. Un main de tests unitaires
+est disponible dans src/lexer\_parser/.
+
+
+Le lexing s'effectue de la facon suivante : Le buffer est lu caractère par caratère
+. Pour chaque caractère un token de base est spécifié (si on a un numéro, le token de Base
+devient un token Numeral). Une fois que le caractère ne correspond plus au token, le token est poussé
+dans la liste et on poursuit le parcours du buffer.
