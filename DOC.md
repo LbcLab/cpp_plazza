@@ -199,7 +199,7 @@ est appelée pour récupérer les données trouvées dans le fichier.
 
 Des tests unitaires sont présents dans src/cipher/main.cpp
 
-CaesarCiphers <a id = "CaesarCiphers"></a>
+CaesarCiphers <a id = "CaesarCipher"></a>
 ------------------------
 
 Cette classe est instanciée par Cipher, elle est détenue sous la forme d'un unique ptr<br />
@@ -210,7 +210,7 @@ Elle contient deux fonctions membre destinées à chiffrer/déchiffrer et à bru
 
 Des tests unitaires sont présents dans src/cipher/main.cpp
 
-XorCiphers <a id = "XorCiphers"></a>
+XorCiphers <a id = "XorCipher"></a>
 ------------------------
 
 Cette classe contient deux fonctions membres pour chiffrer/déchiffrer grâce à une
