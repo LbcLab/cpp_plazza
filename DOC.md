@@ -15,6 +15,7 @@ Sommaire :
 	*	[_Process_]()
 	*	[_ThreadPool_](#ThreadPool)
 	*	[_Timer_](#Timer)
+*	[_Ciphers_](#Ciphers)
 
 Core <a id = "Core"></a>
 ------------------------
@@ -119,3 +120,12 @@ private:
 * _getRemainingTime()_ retourne un entier correspondant au temps restant par rapport à l'appel de _start(int sec)_
 * _begin_ contient l'heure du dernier appel de _start(int sec)_
 * _waitingTime_ correspond au dernier paramètre donné à _start(int sec)_
+
+
+
+Ciphers <a id = "Ciphers"></a>
+------------------------
+
+Les ciphers font parti d'un direcroty spécifique dans src/cipher/. Cette partie du code est chargé de s'occuper de chiffrer, 
+déchiffrer, reconnaître ainsi que de procéder à différentes analyses sur de la donnée chiffée ou non.
+On y retrouve les classe Cipher, CaesarCipher et XorCipher
