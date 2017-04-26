@@ -16,6 +16,7 @@ Sommaire :
 	*	[_ThreadPool_](#ThreadPool)
 	*	[_Timer_](#Timer)
 *	[_Ciphers_](#Ciphers)
+	*	[_Cipher_]
 
 Core <a id = "Core"></a>
 ------------------------
@@ -129,3 +130,11 @@ Ciphers <a id = "Ciphers"></a>
 Les ciphers font parti d'un direcroty spécifique dans src/cipher/. Cette partie du code est chargé de s'occuper de chiffrer, 
 déchiffrer, reconnaître ainsi que de procéder à différentes analyses sur de la donnée chiffée ou non.
 On y retrouve les classe Cipher, CaesarCipher et XorCipher
+
+### Cipher <a id = "Cipher"></a>
+
+Cette classe contient des fonctionnalités pour tester la méthode de chiffrement.
+- test : teste le format de donnée grace a une collection de méthodes
+- testRaw : test une donnée non chiffrée
+- testCaesar : teste une donnée chiffrée avec Caesar
+- testXor : teste une donnée chiffrée avec xor
