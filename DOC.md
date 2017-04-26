@@ -3,7 +3,7 @@ Documentation
 
 Projet : cpp_plazza
 -------------------
-Projet réalisé par le groupe **paulet_a, champi_b et ailler_h**
+Projet réalisé par le groupe **Charles Paulet, Theophile Champion et Hugo Ailleres**
 
 Sommaire :
 ----------
