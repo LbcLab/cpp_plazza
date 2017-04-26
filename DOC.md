@@ -233,7 +233,7 @@ de commande ou de parties du fichier à déchiffrer. Les points d'entrée de ces
 deux analyses sont lex() et lexCli().<br />
 Le lexer construit une liste de tokens qui est alors parsée.<br />
 - std::shared\_ptr<std::vector<std::pair<std::string, plz::Information> > > getTokenList(void) const;<br />
-getTokenList permet de récupérer cette liste de tokens. Un main de tests unitaires
+- getTokenList permet de récupérer cette liste de tokens. Un main de tests unitaires
 est disponible dans src/lexer\_parser/.
 
 
