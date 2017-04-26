@@ -17,6 +17,8 @@ Sommaire :
 	*	[_Timer_](#Timer)
 *	[_Ciphers_](#Ciphers)
 	*	[_Cipher_](#Cipher)
+	*	[_CaesarCipher_](#CaesarCipher)
+	*	[_XorCipher_](#XorCipher)
 
 Core <a id = "Core"></a>
 ------------------------
@@ -194,3 +196,30 @@ donnés ne se sont pas révélés assez explicites.<br />
 Une fois les tests réalisés, le fichier est déchiffré et une fonction membre <br />
 const std::vector<std::string> &getCollectedData() const;<br />
 est appelée pour récupérer les données trouvées dans le fichier.
+
+Des tests unitaires sont présents dans src/cipher/main.cpp
+
+CaesarCiphers <a id = "CaesarCiphers"></a>
+------------------------
+
+Cette classe est instanciée par Cipher, elle est détenue sous la forme d'un unique ptr<br />
+Elle contient deux fonctions membre destinées à chiffrer/déchiffrer et à bruteforcer un code.
+
+- std::string caesar_cipher(std::string const &str, std::size_t shift);
+- std::shared_ptr<std::vector<std::string> > bruteforce_caesar(std::string const &);
+
+Des tests unitaires sont présents dans src/cipher/main.cpp
+
+XorCiphers <a id = "XorCiphers"></a>
+------------------------
+
+Cette classe contient deux fonctions membres pour chiffrer/déchiffrer grâce à une
+clef en char const [2] ou en std::string const.<br />
+Une troisième méthode est là pour bruteforcer le code. Elle renvoie les valeurs
+possibles sous forme d'un pointeur partagé sur un vecteur de string.<br />
+
+- std::string xor_cipher(std::string const, char const [2]);
+- std::string xor_cipher(std::string const, std::string const);
+- std::shared_ptr<std::vector<std::string> > bruteforce_xor(std::string const);
+
+Des tests unitaires sont présents dans src/cipher/main.cpp
