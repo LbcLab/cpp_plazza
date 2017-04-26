@@ -134,8 +134,8 @@ On y retrouve les classe Cipher, CaesarCipher et XorCipher
 ### Cipher <a id = "Cipher"></a>
 
 Cette classe contient des fonctionnalités pour tester la méthode de chiffrement.
-- test : teste le format de donnée grace a une collection de méthodes
-- testRaw : test une donnée non chiffrée
-- testCaesar : teste une donnée chiffrée avec Caesar
-- testXor : teste une donnée chiffrée avec xor
+- bool test(char \*const)  : teste le format de donnée grace a une collection de méthodes
+- bool testRaw(char \*const, plz::Information) : test une donnée non chiffrée pour l'information demandée
+- bool testCaesar(char \*const, plz::Information) : teste une donnée chiffrée avec Caesar pour l'information demandée
+- bool testXor (char \*const, plz::Information) : teste une donnée chiffrée avec xor pour l'information demandée
 
