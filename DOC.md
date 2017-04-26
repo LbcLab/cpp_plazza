@@ -16,7 +16,7 @@ Sommaire :
 	*	[_ThreadPool_](#ThreadPool)
 	*	[_Timer_](#Timer)
 *	[_Ciphers_](#Ciphers)
-	*	[_Cipher_]
+	*	[_Cipher_](#Cipher)
 
 Core <a id = "Core"></a>
 ------------------------
@@ -138,3 +138,4 @@ Cette classe contient des fonctionnalités pour tester la méthode de chiffremen
 - testRaw : test une donnée non chiffrée
 - testCaesar : teste une donnée chiffrée avec Caesar
 - testXor : teste une donnée chiffrée avec xor
+
